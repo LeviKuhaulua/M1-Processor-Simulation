@@ -1,3 +1,7 @@
+/**
+ * @author 
+ *  Levi Kuhaulua
+*/
 public class Memory {
     
     private int[] cell; 
@@ -56,6 +60,14 @@ public class Memory {
         }
     }
 
+    /**
+     * Converts a decimal value to it's Hex representation. 
+     * 
+     * @param decimal
+     *  The decimal value that you want to represent in Hexadecimal 
+     * @return
+     *  A string value that is the Hex representation of the Decimal value. 
+     */
     public static String getHex(int decimal) {
         return Integer.toHexString(decimal); 
     }
