@@ -1,0 +1,6 @@
+# Configurations for my IDE. 
+.vscode/
+
+# Folder containing class files and class files in general. 
+bin/*.class
+*.class
