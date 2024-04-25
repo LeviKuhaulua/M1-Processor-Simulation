@@ -68,7 +68,7 @@ public class Memory {
      * @return
      *  A string value that is the Hex representation of the Decimal value. 
      */
-    public static String getHex(int decimal) {
+    protected static String getHex(int decimal) {
         return Integer.toHexString(decimal); 
     }
 }
