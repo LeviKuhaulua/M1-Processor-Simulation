@@ -1,4 +1,6 @@
 public class Processor {
+
+    
     private int[] reg; 
     private int PC; 
     private int IR; 
@@ -36,6 +38,8 @@ public class Processor {
      * 
      * @return
      *  Boolean value representing if the halt command or unknown command was reached.  
+     * @throws
+     *  ArithmeticException should there be a divison by 0. 
      */
     public boolean step() {
         IR = memory.read(PC++); // Get the address of the instruction set. 
@@ -58,9 +62,8 @@ public class Processor {
                 return false; 
             case 3: 
                 // store a b = cell[reg[a]] = reg[b] 
-                reg[arg2] = memory.read(reg[arg1]); 
+                memory.write(reg[arg1], reg[arg2]);  
                 return false; 
-                
             case 4: 
                 // add a b = reg[a] = reg[a] + reg[b]
                 reg[arg1] += reg[arg2]; 
@@ -135,15 +138,14 @@ public class Processor {
 
     /**
      * Dump the Processor information - Registers, PC, and IR into the Console. Values shown in the 
-     * Processor information is the hexadecimal representation. 
-     * 
+     * Processor information is the hexadecimal representation except for the PC. 
      */
     public void dump() {
         System.out.println("Registers:");
         for (int i = 0; i < reg.length; i++) { 
-            System.out.printf("Register %d = %s %n", i, Memory.getHex(reg[i])); 
+            System.out.printf("Register %s = %s %n", i, Memory.getHex(reg[i])); 
         }
-        System.out.println("PC = " + PC);
+        System.out.println("PC = " + Memory.getHex(PC));
         System.out.println("IR = " + Integer.toHexString(IR));
     }
 

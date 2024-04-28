@@ -56,7 +56,7 @@ public class Memory {
     public void dump() {
         System.out.println("Memory: \n");
         for (int i = 0; i < cell.length; i++) {
-            System.out.printf("Cell[%d] = %s %n", i, getHex(cell[i]));
+            System.out.printf("Cell[%s] = %s %n", getHex(i), getHex(cell[i]));
         }
     }
 

@@ -46,15 +46,51 @@ public class Console {
     */
 	public void load(String fName) {
 		try {
+			boolean haltEncountered = false; 
 			File f = new File(fName);
 			Scanner scan  = new Scanner(f);
 			int address = 0;
-			while(scan.hasNext()) {
-				memory.write(address++, scan.nextInt(16));
-			}
+			String[] argLine = null; 
+			String translation = null; 
 			cpu.setPC(0);
+			if (Assembler.checkFile(f)) {
+				while (scan.hasNext()) {
+					argLine = scan.nextLine().split("[ ]+"); 
+					// System.out.println(Arrays.toString(argLine));
+					if (argLine.length == 1 && argLine[0].equalsIgnoreCase("halt")) {
+						translation = "00000000"; 
+						haltEncountered = true;  
+					} else if (haltEncountered) {
+						// Treat as hexadecimal constants after the first halt statement is encountered. 
+						while (scan.hasNext()) {
+							translation = scan.nextLine(); 
+							// Handles case where another halt statement is encountered. 
+							if (translation.equalsIgnoreCase("halt")) {
+								memory.write(address++, 0); 
+							} else {
+								memory.write(address++, Integer.parseInt(translation, 16));  
+							}							
+						}
+						break; 
+					} else if (argLine.length == 3) {
+						translation = Assembler.parseArguments(Assembler.parseCommand(argLine[0]), argLine[1], argLine[2]); 
+					} else if (argLine.length == 1) {
+						translation = Assembler.parseConstant(argLine[0]); 
+					} else {
+						translation = Assembler.parseArguments(Assembler.parseCommand(argLine[0]), argLine[1]);
+					}
+
+					memory.write(address++, Integer.parseInt(translation, 16)); 
+
+				}
+			} else {
+				while(scan.hasNext()) {
+					memory.write(address++, scan.nextInt(16));
+				}
+			}
+			
 		} catch(Exception e) {
-			System.out.println(e);
+			System.out.println(e.getMessage());
 		}
 	}
 
