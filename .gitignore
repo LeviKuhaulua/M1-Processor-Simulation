@@ -3,4 +3,5 @@
 
 # Folder containing class files and class files in general. 
 bin/*.class
+bin/
 *.class
