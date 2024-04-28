@@ -1,3 +1,18 @@
+/**
+ * Class to simulate processor of Micro-1 chip. This manipulates the values 
+ * stored in the {@link Memory} class and assigns them to the appropriate
+ * register. 
+ * 
+ * <p>
+ * <b>Note</b> that values outputted in the {@link Console} is in 
+ * Hexadecimal notation and not Decimal.
+ * </p> 
+ * 
+ * @author
+ *  <a href="mailto:levi.kuhaulua@outlook.com">Levi Kuhaulua</a> 
+ * @version
+ *  21.0.2
+ */
 public class Processor {
 
     

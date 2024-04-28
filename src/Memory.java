@@ -1,6 +1,16 @@
 /**
+ * The Memory class simulates the Micro-1 Computer's memory. This allows
+ * for values to be stored in the computers memory (with an initial capacity set to 256). 
+ * Works in tandem with the {@link Processor} where values in the computer's memory can be 
+ * manipulated and stored in the registers. 
+ * 
+ * <p> 
+ *  <b>Note</b> Values outputted in the {@link Console} are represented in Hexadecimal notation and not Decimal. 
+ * </p> 
  * @author 
  *  Levi Kuhaulua
+ * @version
+ *  21.0.2
 */
 public class Memory {
     

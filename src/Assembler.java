@@ -1,7 +1,9 @@
 /**
-* Static class that handles converting Assembly language to 
+* Static class that handles converting Assembly language to Machine (hex) language. 
 * @author
 *  Levi Kuhaulua
+* @version 
+*  21.0.2
 */
 
 
@@ -47,7 +49,7 @@ public class Assembler {
      * @param args
      *  Arguments associated with the command.
      * @return
-     *  String value that 
+     *  The hexadecimal representation of the Assembly command and arguments. 
      * @throws
      *  IllegalArgumentException should there be an invalid number of arguments. 
      * @throws 
@@ -81,16 +83,17 @@ public class Assembler {
             throw new OutOfMemoryError("Invalid Register Value: Must be in range 0-7");
         }
         
-        
+
         return PREFIX + cmdHex + arg1 + arg2; 
 
     }
 
     /**
-     * 
+     * Will take in a constant value and return the Hexadecimal representation of the constant. 
      * @param value
-     *  
+     *  The constant value to be parsed. 
      * @return
+     *  The hexadecimal representation of the constant value. 
      */
     public static String parseConstant(String value) {
         return PREFIX + "0" + value.substring(2); 
