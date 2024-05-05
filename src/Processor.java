@@ -155,13 +155,14 @@ public class Processor {
      * Dump the Processor information - Registers, PC, and IR into the Console. Values shown in the 
      * Processor information is the hexadecimal representation except for the PC. 
      */
-    public void dump() {
-        System.out.println("Registers:");
+    public String[] dump() {
+        String[] registers = new String[10]; 
         for (int i = 0; i < reg.length; i++) { 
-            System.out.printf("Register %s = %s %n", i, Memory.getHex(reg[i])); 
+            registers[i] = Memory.getHex(reg[i]); 
         }
-        System.out.println("PC = " + Memory.getHex(PC));
-        System.out.println("IR = " + Integer.toHexString(IR));
+        registers[8] = "PC = " + Memory.getHex(PC); 
+        registers[9] = "IR = " + Integer.toHexString(IR); 
+        return registers; 
     }
 
         

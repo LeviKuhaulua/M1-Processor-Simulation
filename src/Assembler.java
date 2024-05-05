@@ -1,3 +1,10 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.FileWriter; 
+import java.util.Scanner;
+
+import javax.swing.JOptionPane; 
 /**
 * Static class that handles converting Assembly language to Machine (hex) language. 
 * @author
@@ -5,9 +12,6 @@
 * @version 
 *  21.0.2
 */
-
-
-import java.io.File;
 public class Assembler {
     // Variables to help with converting assembly language into Hexadecimal representation. 
     final static String PREFIX = "00000"; 
@@ -99,5 +103,22 @@ public class Assembler {
         return PREFIX + "0" + value.substring(2); 
     }
 
+    /**
+     * Will take in the translated command (from Assembly to Hexadecimal), then write them to a file. 
+     * @param file
+     *  File where translations will be written to
+     * @param content
+     *  Translation to write to the file. 
+     */
+    public static void writeToFile(File file, String content) {
+        File f = file; 
+        try (FileWriter out = new FileWriter(f, true)) {
+            out.write(content); 
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage()); 
+        }
+    }
 
 }

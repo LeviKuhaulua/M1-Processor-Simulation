@@ -63,11 +63,12 @@ public class Memory {
      * into the hexadecimal representation of the values.
      * 
      */
-    public void dump() {
-        System.out.println("Memory: \n");
+    public String[] dump() {
+        String[] cellContents = new String[cell.length]; 
         for (int i = 0; i < cell.length; i++) {
-            System.out.printf("Cell[%s] = %s %n", getHex(i), getHex(cell[i]));
+            cellContents[i] = "Cell[" + getHex(i) + "] = " + getHex(cell[i]); 
         }
+        return cellContents; 
     }
 
     /**
