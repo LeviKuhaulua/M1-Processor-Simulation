@@ -1,7 +1,5 @@
-
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -164,7 +162,7 @@ public class Micro1Viewer extends JFrame {
               registersButton.doClick(); 
               memoryButton.doClick(); 
           } else {
-            // Do nothing. 
+            // Do nothing as this means that user did not select file (closed out or canceled)
           }
 
           
