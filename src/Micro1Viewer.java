@@ -2,7 +2,6 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner; 
@@ -172,6 +171,7 @@ public class Micro1Viewer extends JFrame {
             if (!fileLoaded) {
                 loadButton.doClick(); 
             } else {
+                memoryArea.setText(""); 
                 String[] cellContent = memory.dump(); 
                 for (int i = 0; i < cellContent.length; i++) {
                     memoryArea.append(cellContent[i] + "\n"); 
