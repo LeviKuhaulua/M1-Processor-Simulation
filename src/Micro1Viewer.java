@@ -9,9 +9,7 @@ import java.util.Scanner;
 
 
 /**
- * GUI implementation to replace the {
- *
- * @see Console} interface.
+ * GUI implementation to replace the {@link Console} interface.
  * @author Noeleen Silva
  */
 public class Micro1Viewer extends JFrame {
